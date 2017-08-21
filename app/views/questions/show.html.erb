@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<h1> 詳細 </h1>
+
+<p><%= @question.title %></p>
+<p><%= @question.content %></p>
+<%= link_to 'Edit', edit_question_path(@question.id) %> |
+<%= link_to 'Back', questions_path %>
