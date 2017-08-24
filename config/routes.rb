@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
+  resources :tags, only: [:index, :show]
+
   devise_for :users
 
   root 'tops#index'
