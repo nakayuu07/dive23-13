@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Stack Overflow", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "質問一覧", questions_path %></li>
+          <li><%= link_to "質問をする", new_question_path %></li>
+          <li><%= link_to "マイページ", edit_user_registration_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "ユーザー登録", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
