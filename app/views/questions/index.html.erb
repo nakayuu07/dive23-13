@@ -5,7 +5,9 @@
         <p>タイトル:<%= question.title %></p>
         <p>本文:<%= question.content %></p>
         <p><%= link_to '詳細', question %></p>
+      <% if current_user.id == question.user.id %>
         <p><%= link_to '編集', edit_question_path(question.id) %></p>
         <p><%= link_to '削除', question, method: :delete, data: { confirm: '本当に削除しますか?' } %></p>
+      <% end %>
     <% end %>
 <%= link_to '質問投稿', new_question_path %>
