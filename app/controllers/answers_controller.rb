@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
    @question = @answer.question
    respond_to do |format|
      if @answer.save
-      format.html{ redirect_to question_path(@question), notice: 'コメントを投稿しました.' }
+      format.html{ redirect_to question_path(@question), notice: '回答を投稿しました.' }
       format.js { render :index }
      else
        format.html { render :new }
