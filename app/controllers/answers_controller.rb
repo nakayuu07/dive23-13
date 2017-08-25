@@ -13,6 +13,19 @@ class AnswersController < ApplicationController
    end
  end
 
+ def destroy
+   @answer = Answer.find(params[:id])
+   @question = @answer.question
+   respond_to do |format|
+     if @answer.destroy
+       format.html{ redirect_to question_path(@question), notice: '回答を削除しました.' }
+       format.js { render :index }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
  private
    def answer_params
      params.require(:answer).permit(:question_id, :content)
