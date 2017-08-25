@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
 
   root 'tops#index'
+  get '/favorites', to: 'favorites#index'
 end
