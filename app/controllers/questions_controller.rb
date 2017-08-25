@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  
+
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
 
@@ -39,6 +39,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+   @answer = @question.answers.build
+   @answers = @question.answers
   end
 
   private
