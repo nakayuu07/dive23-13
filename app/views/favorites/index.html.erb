@@ -1,0 +1,14 @@
+<h1>お気に入りランキング</h1>
+<ul>
+  <% @favorites.each do |favorite| %>
+    <li>
+      【★ <%= favorite[1] %>つ】
+      <%= link_to question_path(@questions.find(favorite[0]).id) do %>
+      <%= @questions.find(favorite[0]).title %>
+      <% end %>
+      <br>
+      内容：<%= @questions.find(favorite[0]).content %>
+      <hr>
+    </li>
+  <% end %>
+</ul>
