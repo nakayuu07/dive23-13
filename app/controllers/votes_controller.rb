@@ -10,4 +10,5 @@ class VotesController < ApplicationController
   private
     def vote_params
       require(:vote).permit(:plus_or_minus, :user_id, :question_id :answer_id)
+    end
 end
