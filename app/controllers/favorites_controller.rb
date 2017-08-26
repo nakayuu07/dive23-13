@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
   def index #お気に入りランキングページ
     #お気に入り数の多いものから上位20件を取得
-    @favorites = Favorite.group(:question_id).order('count_all desc').limit(3).count
+    @favorites = Favorite.group(:question_id).order('count_all desc').limit(20).count
     @questions = Question.all
   end
 
