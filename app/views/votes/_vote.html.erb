@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <% if question.vote_user(current_user.id) %>
+    <%= link_to question_vote_path(question_id: question.id), method: :delete, id: "vote-button", class: "fa fa-caret-up" remote: true do %>
+      <span><%= question.like_count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to question_votes_path(question), id: "vote-button", method: :post, remote: true do %>
+    <span><%= question.like_count %></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <i class="fa fa-caret-up" aria-hidden="true"></i>
+  <span><%= question.like_count %></span>
+<% end %>
