@@ -15,6 +15,11 @@
  <%= link_to '編集', edit_question_path(@question.id) %>
 <% end %>
 <%= link_to '戻る', questions_path %>
+
+<div id="vote-area">
+  <%= render partial: "votes/vote", locals: {question: @question} %>
+</div>
+
 <div id="favorite-area">
   <%= render partial: "favorites/favorite_btn", locals: {question: @question} %>
 </div>

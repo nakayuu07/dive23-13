@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
       favorites.find_by(user_id: user.id)
     end
 
-    def vote_user(user_id)
-      votes.find_by(user_id: user_id)
+    def vote_user(user)
+      votes.find_by(user_id: user.id)
     end
 end
