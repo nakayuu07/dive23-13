@@ -16,7 +16,7 @@
       <!-- 自分のページの場合のみ表示 -->
         [<%= link_to "プロフィール編集", edit_user_registration_path %>]
       <% end %>
-        <div><%= profile_img(@user) if profile_img(@user) %></div>
+        <div class="profile"><%= profile_img(@user) if profile_img(@user) %></div>
         <p><プロフィール><br><%= @user.profile %></p>
     </div>
     <div id="tab2" class="tab-pane">
