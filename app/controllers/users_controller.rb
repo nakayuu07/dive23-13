@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def favorite
-    if user_signed_in?
-      @my_favorites = Favorite.where(user_id: current_user.id)
-      @questions = Question.all
-    else
-      render 'new_user_session_path'
-    end
+  def show
+    @user = User.find(params[:id])
+    @questions = Question.where(user_id: params[:id]).order("created_at desc")
+    @answers = Answer.where(user_id: params[:id]).order("created_at desc")
+    @favorites = Favorite.where(user_id: params[:id]).order("created_at desc")
+    @questions_all = Question.all
   end
 end
