@@ -3,11 +3,11 @@
     <%= link_to question_vote_path(question.id, question.vote_user(current_user)), method: :delete, remote: true do %>
       いいね！
     <% end %>
-    <span><%= question.votes_count = 0 %></span>
+    <span><%= question.votes_count %></span> <%# あとで要修正 %>
   <% else %>
     <%= link_to question_votes_path(question.id), method: :post, remote: true do %>
       いいね！
     <% end %>
-    <span><%= question.votes_count = 1 %></span>
+    <span><%= question.votes_count %></span> <%# あとで要修正 %>
   <% end %>
 <% end %>
