@@ -56,7 +56,7 @@
             <li>
               <hr>
               <p><%= answer.created_at.strftime("%Y.%m.%d") %>に回答しました</p>
-              <p>回答した質問:<%= @questions_all.find(answer.question_id).title %></p>
+              <p>回答した質問:<%= @answer_questions.find(answer.question_id).title %></p>
               <p>回答した内容:<%= answer.content %></p>
             </li>
             <% end %>
@@ -69,8 +69,8 @@
             <li>
               <hr>
               <p><%= favorite.created_at.strftime("%Y.%m.%d") %>にお気に入り登録しました</p>
-              <p><%= @questions_all.find(favorite.question_id).title %></p>
-              <p><%= @questions_all.find(favorite.question_id).content %></p>
+              <p><%= @favorite_questions.find(favorite.question_id).title %></p>
+              <p><%= @favorite_questions.find(favorite.question_id).content %></p>
             </li>
             <% end %>
           </ul>
