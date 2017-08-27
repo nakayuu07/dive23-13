@@ -1,0 +1,81 @@
+<h1><%= @user.name %>さんのページです</h1>
+<div>
+  <!--タブのボタン部分-->
+  <ul class="nav nav-tabs">
+    <li class="nav-item active">
+      <a href="#tab1" class="nav-link" data-toggle="tab">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab2" class="nav-link" data-toggle="tab">アクティブ</a>
+    </li>
+  </ul>
+  <!--タブのコンテンツ部分-->
+  <div class="tab-content">
+    <div id="tab1" class="tab-pane active">
+      <%= @user.name %>さんのプロフィール<% if @user.id == current_user.id %>
+      <!-- 自分のページの場合のみ表示 -->
+        [<%= link_to "プロフィール編集", edit_user_registration_path %>]
+      <% end %>
+        <div><%= profile_img(@user) if profile_img(@user) %></div>
+        <p><プロフィール><br><%= @user.profile %></p>
+    </div>
+    <div id="tab2" class="tab-pane">
+      <hr>
+      <!--タブのボタン部分-->
+      <ul class="nav nav-tabs">
+        <li class="nav-item active">
+          <a href="#tab2-1" class="nav-link" data-toggle="tab">投稿した質問</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2-2" class="nav-link" data-toggle="tab">投稿した回答</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2-3" class="nav-link" data-toggle="tab">お気に入り一覧</a>
+        </li>
+      </ul>
+      <!--タブのコンテンツ部分-->
+      <div class="tab-content">
+        <div id="tab2-1" class="tab-pane active">
+          <h4>投稿した質問</h4>
+          <ul>
+            <% @questions.each do |question| %>
+            <li>
+              <hr>
+              <p><%= question.created_at.strftime("%Y.%m.%d") %>に質問しました</p>
+              <p>投稿した質問:<%= question.title %></p>
+              <p>投稿した内容:<%= question.content %></p>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="tab2-2" class="tab-pane">
+          <h4>投稿した回答</h4>
+          <ul>
+            <% @answers.each do |answer| %>
+            <li>
+              <hr>
+              <p><%= answer.created_at.strftime("%Y.%m.%d") %>に回答しました</p>
+              <p>回答した質問:<%= @questions_all.find(answer.question_id).title %></p>
+              <p>回答した内容:<%= answer.content %></p>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="tab2-3" class="tab-pane">
+          <h4>お気に入り一覧</h4>
+          <ul>
+            <% @favorites.each do |favorite| %>
+            <li>
+              <hr>
+              <p><%= favorite.created_at.strftime("%Y.%m.%d") %>にお気に入り登録しました</p>
+              <p><%= @questions_all.find(favorite.question_id).title %></p>
+              <p><%= @questions_all.find(favorite.question_id).content %></p>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
