@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>質問一覧</h1>
-    <%= link_to "お気に入り一覧", favorites_path %>
     <% @questions.each do |question| %>
         <p>タイトル:<%= question.title %></p>
         <p>本文:<%= question.content %></p>
