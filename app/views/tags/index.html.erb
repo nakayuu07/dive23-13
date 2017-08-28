@@ -1,5 +1,9 @@
 <h1>タグ一覧</h1>
 
-<div class="row">
-  <%= render partial: "tags/tag_index", locals: {tags: @tags} %>
-</div>
+<% @tags.each do |tag| %>
+  <div class="row">
+   <%= link_to tags_path(tag) do %>
+   <h4><strong><%= tag.name %></strong></h4>
+   <%= link_to "質問へ",questions_path(question.id), class: 'btn btn-default btn-sm btn-success' %>
+  </div>
+<% end %>

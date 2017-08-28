@@ -18,6 +18,9 @@
     <%= f.label :内容 %>
     <%= f.text_field :content %>
     <br>
+    <%= f.label :タグ %>
+    <input type="text" class="form-control" name="tags" id="input_tags" placeholder="Tags" data-role="tagsinput" />
+    <br>
     <%= f.submit '投稿する' %>
   </div>
 <% end %>
