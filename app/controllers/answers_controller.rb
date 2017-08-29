@@ -16,16 +16,22 @@ class AnswersController < ApplicationController
  def edit
     @answer = Answer.find(params[:id])
     @question = @answer.question
+    respond_to do |format|
+      format.js { render :edit, local: { question: @question}  }
+    end
   end
 
   def update
     @answer = Answer.find(params[:id])
     @question = @answer.question
-    if @answer.update(answer_params)
-       redirect_to question_path(@question)
-    else
-       render :edit if @answer.invalid?
+    respond_to do |format|
+     if @answer.update(answer_params)
+       format.html{ redirect_to question_path(@question), notice: '回答を更新しました.' }
+       format.js { render :index }
+     else
+       format.html { render :edit }
     end
+   end
   end
 
  def destroy
