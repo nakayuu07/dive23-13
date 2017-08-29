@@ -1,0 +1,31 @@
+<h1>タグ付けされた質問</h1>
+<div id="tag_space">
+  <span class="tag" ><%= @tag.name %></span>
+</div>
+<%#= @tag.questions.title %>
+<% @tag.questions.each_with_index do |question| %>
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <%= question.title %>
+      <%#= render partial: "questions/additional_infomation", locals: {question: tag} %>
+    </div>
+    <div class="col-md-10 col-sm-10">
+      <p>
+        <%= question.content %>
+        <%#= link_to question_path(question) do %><%#= question.title %><%# end %>
+      </p>
+      <ul class="list-inline">
+        <li class="pull-left">
+          <%#= render partial: "tags/tag_list", locals: {tags: tag.tags} %>
+        </li>
+        <li class="pull-right">
+          更新日時 :<%#= date_japan(tag.updated_at) %>
+          <%#= link_to user_path(tag.user) do %><%#= tag.user.name %><%# end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <hr>
+    </div>
+  </div>
+<% end %>

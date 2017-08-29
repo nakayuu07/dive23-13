@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # root to: 'questions#index'
+  get 'search', to: 'questions#search'
+
   devise_for :users
   
   resources :users, only: [:index, :show]
