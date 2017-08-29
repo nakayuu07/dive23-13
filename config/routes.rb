@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'search', to: 'questions#search'
 
   devise_for :users
-
-  resources :users, only: [:show]
+  
+  resources :users, only: [:index, :show]
 
   resources :questions do
     resources :votes, only: [:create, :destroy]

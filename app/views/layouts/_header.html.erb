@@ -7,6 +7,8 @@
           <li><%= link_to "質問一覧", questions_path %></li>
           <li><%= link_to "質問をする", new_question_path %></li>
           <li><%= link_to 'タグ', tags_path %></li>
+          <li><%= link_to "人気投稿", favorites_path %></li>
+          <li><%= link_to "ユーザ一覧", users_path %></li>
           <li><%= link_to "マイページ", user_path(current_user.id) %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
