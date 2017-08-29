@@ -13,6 +13,21 @@ class AnswersController < ApplicationController
    end
  end
 
+ def edit
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+    if @answer.update(answer_params)
+       redirect_to question_path(@question)
+    else
+       render :edit if @answer.invalid?
+    end
+  end
+
  def destroy
    @answer = Answer.find(params[:id])
    @question = @answer.question
