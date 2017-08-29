@@ -1,14 +1,25 @@
+<div class="container">
+ <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 <p id="notice"><%= notice %></p>
 
 <h1>質問一覧</h1>
-    <%= link_to "お気に入り一覧", favorites_path %>
-    <% @questions.each do |question| %>
+    <%= link_to "お気に入り一覧", favorites_path %><br>
+    <% @questions.each do |question| %><br>
         <p>タイトル:<%= question.title %></p>
         <p>本文:<%= question.content %></p>
+        <p>タグ:<%= question.tags %></p>
         <p><%= link_to '詳細', question %></p>
+        <p><%= link_to "タグ", tags_path %></p>
       <% if current_user.id == question.user.id %>
         <p><%= link_to '編集', edit_question_path(question.id) %></p>
         <p><%= link_to '削除', question, method: :delete, data: { confirm: '本当に削除しますか?' } %></p>
       <% end %>
+      <ul class="list-inline">
+       <li class="pull-left">
+          <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
+       </li>
+      </ul>
     <% end %>
 <%= link_to '質問投稿', new_question_path %>
+ </div>
+</div>

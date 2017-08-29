@@ -4,6 +4,8 @@ class Question < ActiveRecord::Base
     has_many :answers, dependent: :destroy
     has_many :votes, dependent: :destroy
     has_many :favorites, dependent: :destroy
+    has_many :taggings, dependent: :destroy
+    has_many :tags, through: :taggings
     default_scope -> { order(updated_at: :desc) }
 
     def favorite_by(user)

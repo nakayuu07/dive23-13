@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+
   end
 
   def new
@@ -15,6 +16,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
+    input_tags_names.each do |name|
+
+      tag = Tag.register!(name)
+      @question.taggings.build(tag_id: tag.id)
+    end
     if @question.save
        redirect_to questions_path
     else
@@ -26,6 +32,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question.tags.destroy_all
+    input_tags_names.each do |name|
+      tag = Tag.register!(name)
+      @question.taggings.build(tag_id: tag.id)
+    end
     if @question.update(question_params)
        redirect_to questions_path
     else
@@ -48,9 +59,10 @@ class QuestionsController < ApplicationController
     def set_question
       @question = Question.find(params[:id])
     end
-
-
     def question_params
        params.require(:question).permit(:title, :content)
+    end
+    def input_tags_names
+      params.require(:question).permit(:tags)['tags'].split(",")
     end
 end
