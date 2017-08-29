@@ -1,0 +1,19 @@
+<%= form_for([@question,@answer]) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+     <h2><%= @answer.errors.count %>件のエラーがあります。</h2>
+
+     <ul>
+       <% @answer.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+    </div>
+    <% end %>
+
+    <%= f.hidden_field :question_id %>
+    <div class = "answer edit">
+    <%= f.text_field :content, placeholder: "回答"%>
+    </div>
+    <%= f.submit'回答を編集する'%>
+  <% end %>
