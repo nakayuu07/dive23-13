@@ -1,14 +1,17 @@
-<h1>お気に入りランキング</h1>
-<ul>
-  <% @favorites.each do |favorite| %>
-    <li>
-      【★ <%= favorite[1] %>つ】
-      <%= link_to question_path(@questions.find(favorite[0]).id) do %>
-      <%= @questions.find(favorite[0]).title %>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h1>お気に入りランキング</h1>
+    <ul>
+      <% @favorites.each do |favorite| %>
+        <li>
+          <hr>
+          <%= link_to question_path(@questions.find(favorite[0]).id) do %>
+          <%= @questions.find(favorite[0]).title %>
+          <% end %>
+          【<%= favorite[1] %>票】<br>
+          内容：<%= @questions.find(favorite[0]).content %>
+        </li>
       <% end %>
-      <br>
-      内容：<%= @questions.find(favorite[0]).content %>
-      <hr>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>

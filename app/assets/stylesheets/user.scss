@@ -6,3 +6,40 @@
     width: 150px;
     height: 150px;
 }
+
+#users {
+  .profile {
+    &::after {
+      content: '.';
+      height: 0;
+      font-size: 0;
+      display: block;
+      clear: both;
+    }
+    .profile-img {
+      float: left;
+      margin-right: 20px;
+      img {
+          width: 100px;
+          height: 100px;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+    .profile-text {
+      float: left;
+      .name {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+#tab1 .profile {
+  margin: 20px 0;
+}
+
+#tab2 {
+  margin-top: 30px;
+}
