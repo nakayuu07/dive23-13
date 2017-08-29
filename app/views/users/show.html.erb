@@ -61,10 +61,10 @@
               <li>
                 <hr>
                 <p><%= answer.created_at.strftime("%Y.%m.%d") %>に回答しました</p>
-                <p>回答した質問:<%= @answer_questions.find(answer.question_id).title %></p>
                 <%= link_to question_path(answer.question_id) do %>
-                <p>回答した内容:<%= answer.content %></p>
+                <p>回答した質問:<%= @answer_questions.find(answer.question_id).title %></p>
                 <% end %>
+                <p>回答した内容:<%= answer.content %></p>
               </li>
               <% end %>
             </ul>
