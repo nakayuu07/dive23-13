@@ -1,0 +1,2 @@
+$("#answer_area_<%= @answer.id %>").html("<%= j(render 'answers/form', { answer: @answer, question: @answer.question }) %>")
+$(':text').val(<%= @answer.content %>)

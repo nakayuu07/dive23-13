@@ -1,16 +1,20 @@
 <ul>
   <% answers.each do |answer| %>
     <% unless answer.id.nil? %>
+
+      <div id="answer_area_<%= answer.id %>" >
       <li>
         <p><%= answer.user.name %>さんが回答しました。</p>
         <p><%= answer.content %></p>
         <% if current_user.id == answer.user.id %>
           <p>
-            <%= link_to '編集', edit_question_answer_path(question, answer), class: "fa fa-pencil-square-o fa-lg" %>
+            <%= link_to '編集', edit_question_answer_path(question, answer), class: "fa fa-pencil-square-o fa-lg",remote: true %>
             <%= link_to '削除', question_answer_path(question, answer), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
           </p>
         <% end %>
       </li>
+    </div>
+
     <% end %>
   <% end %>
 </ul>
