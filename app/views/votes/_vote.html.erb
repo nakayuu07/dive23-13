@@ -1,13 +1,25 @@
 <% if user_signed_in? %>
   <% if is_vote?(question) %>
     <%= link_to question_vote_path(question.id, question.vote_user(current_user)), method: :delete, remote: true do %>
-      いいね！
+      <div class="btn btn-success">
+        いいね！
+        <% if question.votes != nil %>
+          <%= question.votes.count %>
+        <% else %>
+          0
+        <% end %>
+      </div>
     <% end %>
-    <span><%= question.votes_count %></span> <%# あとで要修正 %>
   <% else %>
     <%= link_to question_votes_path(question.id), method: :post, remote: true do %>
-      いいね！
+      <div class="btn btn-default">
+        いいね！
+        <% if question.votes != nil %>
+          <%= question.votes.count %>
+        <% else %>
+          0
+        <% end %>
+      </div>
     <% end %>
-    <span><%= question.votes_count %></span> <%# あとで要修正 %>
   <% end %>
 <% end %>

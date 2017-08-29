@@ -7,7 +7,6 @@ class VotesController < ApplicationController
     unless vote.save
       redirect_to questions_path
     end
-    @votes = Vote.where(question_id: params[:question_id])
   end
 
   def destroy
@@ -16,6 +15,5 @@ class VotesController < ApplicationController
     unless vote.destroy
       redirect_to questions_path
     end
-    @votes = Vote.where(question_id: params[:question_id])
   end
 end
