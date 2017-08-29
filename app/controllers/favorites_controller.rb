@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     #お気に入り数の多いものから上位20件を取得
     @favorites = Favorite.group(:question_id).order('count_all desc').limit(20).count
     @questions = Question.where(id: [@favorites.keys])
+    @users = User.where(id: [@favorites.keys])
   end
 
   def create #お気に入り追加アクション

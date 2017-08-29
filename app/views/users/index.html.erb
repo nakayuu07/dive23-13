@@ -1,15 +1,27 @@
-<div class="content-flued">  
-<h1>ユーザ一覧ページ</h1>
-<ul class="row">
-  <% @users.each do |user| %>
-  <li class="col-md-3 col-sm-3 col-xs-4">
-    <div class="profile">
-      <%= link_to user_path(user.id) do %>
-      <%= profile_img(user) if profile_img(user) %>
-      <% end %>
-    </div>
-    <%= user.name %>
-  </li>
-  <% end %>
-</ul>
+<div class="content">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+  <h1>ユーザ一覧ページ</h1>
+  <ul id="users">
+    <% @users.each do |user| %>
+    <li>
+      <hr>
+      <div class="profile">
+        <div class="profile-img">
+          <%= link_to user_path(user.id) do %>
+          <%= profile_img(user) if profile_img(user) %>
+          <% end %>
+        </div>
+        <div class="profile-text">
+          <div class="name">
+            <%= link_to user_path(user.id) do %>
+            <%= user.name %>さん
+            <% end %>
+          </div>
+          <div class="text"><%= user.profile %></div>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  </div>
 </div>
