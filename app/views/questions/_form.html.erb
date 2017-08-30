@@ -11,16 +11,15 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title %>
+ <div class="actions">
+    <%= f.text_field :title, placeholder: "タイトル" %>
     <br>
-    <%= f.label :内容 %>
-    <%= f.text_field :content %>
+    <div class = "content">
+     <%= f.text_field :content, placeholder: "本文" %>
+    </div>
     <br>
-    <%= f.label :タグ %>
     <%= f.text_field :tags, 'data-role'=>'tagsinput', placeholder: "質問に関連するタグ" %>
     <br>
     <%= f.submit '投稿する' %>
-  </div>
+ </div>
 <% end %>
