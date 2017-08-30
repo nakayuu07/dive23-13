@@ -18,7 +18,9 @@
      <%= f.text_field :content, placeholder: "本文" %>
     </div>
     <br>
-    <%= f.text_field :tags, 'data-role'=>'tagsinput', placeholder: "質問に関連するタグ" %>
+    <div class = "content">
+    <%= f.text_field :tags, 'data-role'=>'tagsinput', value: nil, placeholder: "質問に関連するタグ" %>
+    </div>
     <br>
     <%= f.submit '投稿する' %>
  </div>
