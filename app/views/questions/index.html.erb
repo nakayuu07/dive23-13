@@ -11,7 +11,7 @@
          <p><%= question.user.name %><p>
         <% end %>
         <p class= "time"><%= question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
-        <p><strong><%= link_to question_path(question) do %> <%= question.title %></strong>  <% end %></p>
+        <p><strong>質問:<%= link_to question_path(question) do %> <%= question.title %></strong>  <% end %></p>
         <p>タグ:<%= question.tags %></p>
         <p><%= link_to "タグ", tags_path %></p>
         <ul class="list-inline">
