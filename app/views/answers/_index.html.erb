@@ -12,6 +12,9 @@
             <%= link_to '削除', question_answer_path(question, answer), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
           </p>
         <% end %>
+        <div id="vote-answer-area-<%= answer.id %>">
+          <%= render partial: "votes/vote_answer", locals: { question: answer.question, answer: answer } %>
+        </div>
       </li>
     </div>
 
