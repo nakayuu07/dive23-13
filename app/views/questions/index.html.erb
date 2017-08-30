@@ -12,7 +12,7 @@
         <% end %>
         <p class= "time"><%= question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
 
-        <p><strong><%= link_to question_path(question) do %> タイトル:<%= question.title %></strong></p>
+        <p><strong>質問:<%= link_to question_path(question) do %> タイトル:<%= question.title %></strong></p>
         <p><strong>本文:<%= question.content %></strong>  <% end %></p>
         <p><%= link_to "タグ一覧", tags_path %></p>
 
