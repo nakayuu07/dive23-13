@@ -11,16 +11,17 @@
         <p class = "time"><%= answer.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
         <% if current_user.id == answer.user.id %>
           <p class = "icon">
-            <%= link_to  edit_question_answer_path(question, answer), class: 'glyphicon glyphicon-wrench',remote: true do %> <% end %>
-            <%= link_to  question_answer_path(question, answer), class: 'glyphicon glyphicon-trash', method: :delete, data: { confirm: '本当に削除しますか?'},remote: true do%> <% end %>
+            <%= link_to " ", edit_question_answer_path(question, answer), class: 'glyphicon glyphicon-wrench',remote: true %>
+            <%= link_to " ",question_answer_path(question, answer), class: 'glyphicon glyphicon-trash', method: :delete, data: { confirm: '本当に削除しますか?'},remote: true %>
           </p>
         <% end %>
-
+       <div class = "right">
         <div id="vote-answer-area-<%= answer.id %>">
           <%= render partial: "votes/vote_answer", locals: { question: answer.question, answer: answer } %>
         </div>
        </div>
-      </li>
+      </div>
+     </li>
 
     <% end %>
   <% end %>

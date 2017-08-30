@@ -21,8 +21,8 @@
         </ul>
       <% if current_user.id == question.user.id %>
        <p class ="icon">
-        <%= link_to edit_question_path(question.id),class: 'glyphicon glyphicon-wrench' do %> <% end %>
-        <%= link_to question_path(question), method: :delete, data: { confirm: '本当に削除しますか?' },class: 'glyphicon glyphicon-trash' do %> <% end %>
+        <%= link_to " ",edit_question_path(question.id),class: 'glyphicon glyphicon-wrench' %>
+        <%= link_to " ",question_path(question), method: :delete, data: { confirm: '本当に削除しますか?' },class: 'glyphicon glyphicon-trash'%>
        </p>
      </div>
       <% end %>
