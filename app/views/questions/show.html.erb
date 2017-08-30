@@ -1,25 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+  <div class="blog-text">
+    <p id="notice"><%= notice %></p>
+     <div class = "line">
+     <p class = "frame" >質問者</p>
+      <%= link_to user_path(@question.user.id) do %>
+       <p class = "center"><strong><%= @question.user.name %><strong><p>
+      <% end %>
+      <p class = "frame">内容</P>
+      <p class = "center"><%= @question.content %></p><br>
+      <p class = "time"><strong>作成時間:</strong>
+            <%= @question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
+      <p class = "time"><strong>編集時間:</strong>
+            <%= @question.updated_at.strftime("%y/%m/%d %p %l:%M") %></p>
+      <% if current_user.id == @question.user.id %>
+       <p class = "icon">
+        <%= link_to  edit_question_path(@question.id),class: 'glyphicon glyphicon-wrench' do %> <% end %>
+        <%= link_to question_path(@question.id), method: :delete, data: { confirm: '本当に削除しますか?' },class: 'glyphicon glyphicon-trash' do %> <% end %></p>
+      <% end %>
+     </div>
 
-<h1> 詳細 </h1>
+     <div class = "center">
+        <div id="answers_area">
+          <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
+        </div>
+        <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
+     </div>
 
-<p><%= @question.title %></p>
-<p><%= @question.content %></p>
-<p><strong>作成時間:</strong>
-      <%= @question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
-  <p>回答一覧</p>
-  <div id="answers_area">
-    <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
+      <%= link_to  questions_path,class: 'glyphicon glyphicon-arrow-left' do %> <% end %>
+
+   <div class = "right">
+    <div id="vote-area">
+      <%= render partial: "votes/vote", locals: {question: @question} %>
+    </div>
+
+    <div id="favorite-area">
+      <%= render partial: "favorites/favorite_btn", locals: {question: @question} %>
+    </div>
+   <div>
   </div>
-  <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
-<% if current_user.id == @question.user.id %>
- <%= link_to '編集', edit_question_path(@question.id) %>
-<% end %>
-<%= link_to '戻る', questions_path %>
-
-<div id="vote-area">
-  <%= render partial: "votes/vote", locals: {question: @question} %>
-</div>
-
-<div id="favorite-area">
-  <%= render partial: "favorites/favorite_btn", locals: {question: @question} %>
 </div>
