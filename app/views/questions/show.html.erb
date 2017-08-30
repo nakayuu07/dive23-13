@@ -2,21 +2,22 @@
   <div class="blog-text">
     <p id="notice"><%= notice %></p>
      <div class = "line">
-     <p class = "left"><strong>質問者</strong></p>
-      <%= link_to user_path(@question.user.id) do %>
-       <p class = "center"><strong><%= @question.user.name %><strong><p>
-      <% end %>
-      <p class = "left">内容</P>
+      <p class = "center">内容</P>
       <p class = "center"><%= @question.content %></p><br>
       <p class = "time"><strong>作成時間:</strong>
             <%= @question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
       <p class = "time"><strong>編集時間:</strong>
             <%= @question.updated_at.strftime("%y/%m/%d %p %l:%M") %></p>
+
+      <p class = "right"><strong>投稿者：
+        <%= link_to user_path(@question.user.id) do %>
+         <%= @question.user.name %><strong></p>
+        <% end %>
       <% if current_user.id == @question.user.id %>
        <p class = "icon">
         <%= link_to " ", edit_question_path(@question.id),class: 'glyphicon glyphicon-wrench' %>
         <%= link_to " ",question_path(@question.id), method: :delete, data: { confirm: '本当に削除しますか?' },class: 'glyphicon glyphicon-trash' %></p>
-      <% end %>
+       <% end %>
      </div>
 
      <div class = "center">
