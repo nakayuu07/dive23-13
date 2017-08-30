@@ -8,12 +8,14 @@
     <% @questions.each do |question| %><br>
      <div class="line">
         <%= link_to user_path(question.user.id) do %>
-         <p><%= question.user.name %><p>
+         <p>ユーザー名:<%= question.user.name %><p>
         <% end %>
         <p class= "time"><%= question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
-        <p><strong>質問:<%= link_to question_path(question) do %> <%= question.title %></strong>  <% end %></p>
-        <p>タグ:<%= question.tags %></p>
-        <p><%= link_to "タグ", tags_path %></p>
+
+        <p><strong>質問:<%= link_to question_path(question) do %> タイトル:<%= question.title %></strong></p>
+        <p><strong>本文:<%= question.content %></strong>  <% end %></p>
+        <p><%= link_to "タグ一覧", tags_path %></p>
+
         <ul class="list-inline">
          <li class="pull-left">
             <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
