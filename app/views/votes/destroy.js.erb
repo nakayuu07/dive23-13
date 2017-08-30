@@ -1,1 +1,6 @@
-$('#vote-area').html("<%= j render partial: 'votes/vote', locals: { question: @question} %>");
+<% if @question_or_answer == "question" %>
+  $("#vote-area").html("<%= j render partial: 'votes/vote', locals: { question: @question } %>");
+<% elsif @question_or_answer == "answer" %>
+  $("#vote-answer-area-<%= @answer.id %>").html("<%= j render partial: 'votes/vote_answer', locals: { question: @question, answer: @answer } %>");
+<% end %>
+

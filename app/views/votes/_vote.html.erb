@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <% if is_vote?(question) %>
-    <%= link_to question_vote_path(question.id, question.vote_user(current_user)), method: :delete, remote: true do %>
+    <%= link_to question_vote_path(question.id, question.vote_user(current_user), params: {question_or_answer: "question"}), method: :delete, remote: true do %>
       <div class="btn btn-success">
         いいね！
         <% if question.votes != nil %>
@@ -11,7 +11,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= link_to question_votes_path(question.id), method: :post, remote: true do %>
+    <%= link_to question_votes_path(question.id, params: {question_or_answer: "question"}), method: :post, remote: true do %>
       <div class="btn btn-default">
         いいね！
         <% if question.votes != nil %>
