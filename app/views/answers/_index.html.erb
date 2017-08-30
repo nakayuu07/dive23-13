@@ -15,7 +15,11 @@
             <%= link_to  question_answer_path(question, answer), class: 'glyphicon glyphicon-trash', method: :delete, data: { confirm: '本当に削除しますか?'},remote: true do%> <% end %>
           </p>
         <% end %>
-       <div>
+
+        <div id="vote-answer-area-<%= answer.id %>">
+          <%= render partial: "votes/vote_answer", locals: { question: answer.question, answer: answer } %>
+        </div>
+       </div>
       </li>
 
     <% end %>
