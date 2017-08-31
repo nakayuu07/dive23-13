@@ -7,13 +7,13 @@
     <P class = "contribution"><%= link_to '新規投稿', new_question_path,class: "btn btn-info"%></P>
     <% @questions.each do |question| %><br>
      <div class="line">
-        <%= link_to user_path(question.user.id) do %>
-         <p>ユーザー名:<%= question.user.name %><p>
-        <% end %>
-        <p class= "time"><%= question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
 
-        <p><strong>質問:<%= link_to question_path(question) do %> タイトル:<%= question.title %></strong></p>
-        <p><strong>本文:<%= question.content %></strong>  <% end %></p>
+        <p class= "time"><%= question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
+        <p><strong>質問:<%= link_to question_path(question) do %><%= question.title %></strong></p><% end %></p>
+        <p class = "right">投稿者:
+        <%= link_to user_path(question.user.id) do %>
+         <%= question.user.name %></p>
+        <% end %>
         <p><%= link_to "タグ一覧", tags_path %></p>
 
         <ul class="list-inline">
@@ -29,5 +29,6 @@
      </div>
       <% end %>
     <% end %>
+   <%= link_to  " ",questions_path,class: 'glyphicon glyphicon-arrow-up' %>
   </div>
 </div>
