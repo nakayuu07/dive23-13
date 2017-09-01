@@ -3,4 +3,3 @@
 <% elsif @question_or_answer == "answer" %>
   $("#vote-answer-area-<%= @answer.id %>").html("<%= j render partial: 'votes/vote_answer', locals: { question: @question, answer: @answer } %>");
 <% end %>
-
