@@ -12,10 +12,10 @@
   <% end %>
 
  <div class="actions">
-    <%= f.text_field :title, placeholder: "タイトル" %>
+    <%= f.text_field :title, placeholder: "タイトル", class: "title_text"%>
     <br>
     <div class = "content">
-     <%= f.text_field :content, placeholder: "本文" %>
+     <%= f.text_area :content, placeholder: "本文",  class: "text"  %>
     </div>
     <br>
     <div class = "content">
