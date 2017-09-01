@@ -2,6 +2,9 @@
   <div class="blog-text">
     <p id="notice"><%= notice %></p>
      <div class = "line">
+      <p class = "left"><strong>タイトル</strong></p>
+      <p class = "center"><%= @question.title %></p><br>
+      <p class = "left"><strong>内容</strong></p>
       <p class = "center"><%= @question.content %></p><br>
       <p class = "time"><strong>作成時間:</strong>
             <%= @question.created_at.strftime("%y/%m/%d %p %l:%M") %></p>
