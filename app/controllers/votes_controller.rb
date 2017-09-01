@@ -29,13 +29,7 @@ class VotesController < ApplicationController
       @question_or_answer = "answer"
       @answer = Answer.find(params[:answer_id])
       @question = @answer.question
-      if params[:plus_or_minus] == "plus"
-        @plus_or_minus = "plus"
-        vote = current_user.votes.build(question_id: @question.id, answer_id: @answer.id, plus_or_minus: 1)
-      elsif params[:plus_or_minus] == "minus"
-        @plus_or_minus = "minus"
-        vote = current_user.votes.build(question_id: @question.id, answer_id: @answer.id, plus_or_minus: -1)
-      end
+      vote = current_user.votes.build(answer_id: @answer.id)
       unless vote.save
         redirect_to questions_path
       end
