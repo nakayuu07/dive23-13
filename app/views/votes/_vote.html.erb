@@ -1,35 +1,23 @@
 <% if user_signed_in? %>
-  <% if is_vote?(question) %>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "plus"}), method: :post, remote: true do %>
-        <i class="fa fa-sort-up" style="font-size:36px;"></i>
-      <% end %>
-      <p style="font-size:24px"><%= vote_question_sum(question) %></p>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "minus"}), method: :post, remote: true do %>
-        <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
-      <% end %>
+  <% if vote_question_plusorminus(question) == nil %>
+    <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: 1}), method: :post, remote: true do %>
+      <i class="fa fa-sort-up" style="font-size:36px;"></i>
+    <% end %>
+    <p style="font-size:24px"><%= vote_question_sum(question) %></p>
+    <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: -1}), method: :post, remote: true do %>
+      <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
+    <% end %>
   <% elsif vote_question_plusorminus(question) == 1 %>
-      <%= link_to question_vote_path(question.id, question.vote_user(current_user), params: {question_or_answer: "question"}), method: :delete, remote: true do %>
-        <i class="fa fa-sort-up" style="font-size:36px;color:blue;"></i>
-      <% end %>
+      <i class="fa fa-sort-up" style="font-size:36px;"></i>
       <p style="font-size:24px"><%= vote_question_sum(question) %></p>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "plustominus"}), method: :post, remote: true do %>
+      <%= link_to question_vote_path(question.id, question.vote_user(current_user), params: {question_or_answer: "question"}), method: :delete, remote: true do %>
         <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
       <% end %>
   <% elsif vote_question_plusorminus(question) == -1 %>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "minustoplus"}), method: :post, remote: true do %>
-        <i class="fa fa-sort-up" style="font-size:36px;"></i>
-      <% end %>
-      <p style="font-size:24px"><%= vote_question_sum(question) %></p>
       <%= link_to question_vote_path(question.id, question.vote_user(current_user), params: {question_or_answer: "question"}), method: :delete, remote: true do %>
-        <i class="fa fa-sort-down" style="font-size:36px;color:blue;"></i><br>
-      <% end %>
-  <% else %>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "plus"}), method: :post, remote: true do %>
         <i class="fa fa-sort-up" style="font-size:36px;"></i>
       <% end %>
       <p style="font-size:24px"><%= vote_question_sum(question) %></p>
-      <%= link_to question_votes_path(question.id, params: {question_or_answer: "question", plus_or_minus: "minus"}), method: :post, remote: true do %>
-        <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
-      <% end %>
+      <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
   <% end %>
 <% end %>
