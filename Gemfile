@@ -28,13 +28,15 @@ gem 'mini_magick'
 
 gem 'rails_12factor', group: :production
 
+gem 'faker'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
   gem 'pry-rails'
   gem 'better_errors'
   gem "rspec-rails"
-  gem "factory_girl_rails"
+  gem 'factory_girl_rails'
 end
 
 group :development do
