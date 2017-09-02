@@ -21,6 +21,10 @@
             <%= link_to "ユーザー設定", edit_user_registration_path %>
             <% end %><br>
             <%= @user.profile %>
+            <hr>
+            質問回数： <%= @question_post_count %>回 <br>
+            回答回数： <%= @answer_post_count %>回 <br>
+            貢献度： <%= @contribution_point %>ポイント
           </p>
       </div>
       <div id="tab2" class="tab-pane">
