@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
 
 
   def index
-    @questions = Question.all
-
+    @questions = Question.all.includes(:user, :tags)
   end
 
   def new
@@ -51,7 +50,7 @@ class QuestionsController < ApplicationController
 
   def show
    @answer = @question.answers.build
-   @answers = @question.answers
+   @answers = @question.answers.includes(:user)
   end
 
   private
