@@ -1,25 +1,23 @@
 <% if user_signed_in? %>
-  <% if is_answer_vote?(answer) %>
+  <% if vote_answer_plusorminus(answer) == nil %>
+    <%= link_to question_answer_votes_path(answer.question.id, answer.id, params: {question_or_answer: "answer", plus_or_minus: 1}), method: :post, remote: true do %>
+      <i class="fa fa-sort-up" style="font-size:36px;"></i>
+    <% end %>
+    <p style="font-size:24px"><%= vote_answer_sum(answer) %></p>
+    <%= link_to question_answer_votes_path(answer.question.id, answer.id, params: {question_or_answer: "answer", plus_or_minus: -1}), method: :post, remote: true do %>
+      <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
+    <% end %>
+  <% elsif vote_answer_plusorminus(answer) == 1 %>
+    <i class="fa fa-sort-up" style="font-size:36px;"></i>
+    <p style="font-size:24px"><%= vote_answer_sum(answer) %></p>
     <%= link_to question_answer_vote_path(answer.question.id, answer.id, answer.vote_user(current_user), params: {question_or_answer: "answer"}), method: :delete, remote: true do %>
-      <div class="btn btn-success">
-        いいね！
-        <% if answer.votes != nil %>
-          <%= answer.votes.count %>
-        <% else %>
-          0
-        <% end %>
-      </div>
+      <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
     <% end %>
-  <% else %>
-    <%= link_to question_answer_votes_path(answer.question.id, answer.id, params: {question_or_answer: "answer"}), method: :post, remote: true do %>
-      <div class="btn btn-default">
-        いいね！
-        <% if answer.votes != nil %>
-          <%= answer.votes.count %>
-        <% else %>
-          0
-        <% end %>
-      </div>
+  <% elsif vote_answer_plusorminus(answer) == -1 %>
+    <%= link_to question_answer_vote_path(answer.question.id, answer.id, answer.vote_user(current_user), params: {question_or_answer: "answer"}), method: :delete, remote: true do %>
+      <i class="fa fa-sort-up" style="font-size:36px;"></i>
     <% end %>
+    <p style="font-size:24px"><%= vote_answer_sum(answer) %></p>
+    <i class="fa fa-sort-down" style="font-size:36px;"></i><br>
   <% end %>
 <% end %>
